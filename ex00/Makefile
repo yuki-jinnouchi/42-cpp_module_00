@@ -10,16 +10,16 @@
 # $*: stem (bit which matches the % wildcard in rule definition)
 
 # name
-OUTPUT_DIR = 		.
-NAME = 				$(OUTPUT_DIR)/megaphone
+OUTPUT_DIR = 	.
+NAME = 			$(OUTPUT_DIR)/megaphone
 
 # dirs
-INCL_DIR =			incl
-SRCS_DIR =			srcs
-OBJS_DIR =			objs
+INCL_DIR =		.
+SRCS_DIR =		.
+OBJS_DIR =		objs
 
 # Files
-# INCL	=	$(wildcard $(INCL_DIR)/*.hpp)
+INCL	=	$(wildcard $(INCL_DIR)/*.hpp)
 SRCS	=	$(wildcard $(SRCS_DIR)/*.cpp)
 OBJS 	=	$(patsubst $(SRCS_DIR)/%.cpp,$(OBJS_DIR)/%.o,$(SRCS))
 
@@ -41,10 +41,11 @@ $(NAME): $(OBJS)
 	@echo "change permission of $(NAME) done.\n"
 
 # Compile Targets
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c | $(OBJS_DIR)
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.cpp | $(OBJS_DIR)
 	$(CC) $(CFLAGS) $(UI_FLAGS) -c $< -o $@
+
 $(OBJS_DIR):
-	mkdir $(OBJS_DIR)
+	mkdir -p $(OBJS_DIR)
 
 clean:
 	rm -rf $(OBJS)
