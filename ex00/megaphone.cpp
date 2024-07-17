@@ -1,44 +1,38 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
+std::string to_upper(std::string str) {
+  int i;
+  int strlen;
 
-string to_upper(string str)
-{
-	int     i;
-	int     strlen;
-
-	i = 0;
-	strlen = str.length();
-	while (i < strlen)
-	{
-		str[i] = toupper(str[i]);
-		i++;
-	}
-	return (str);
+  i = 0;
+  strlen = str.length();
+  while (i < strlen) {
+    str[i] = toupper(str[i]);
+    i++;
+  }
+  return (str);
 }
 
-void megaphone(int argc, char **argv)
-{
-	int     i;
-	string  str;
+void megaphone(int argc, char **argv) {
+  int i;
+  std::string str;
 
-	i = 1;
-	while (i < argc)
-	{
-		str = argv[i];
-		str = to_upper(str);
-		cout << str;
-		i++;
-	}
-	cout << endl;
+  i = 1;
+  while (i < argc) {
+    str = argv[i];
+    str = to_upper(str);
+    std::cout << str;
+    i++;
+  }
+  std::cout << std::endl;
 }
 
 int main(int argc, char **argv) {
-	if (argc > 1) {
-		megaphone(argc, argv);
-	} else {
-		cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << endl;
-	}
-	return (0);
+  if (argc > 1) {
+    megaphone(argc, argv);
+  } else {
+    std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+  }
+  return (0);
 }
