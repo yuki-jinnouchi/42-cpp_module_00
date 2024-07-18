@@ -27,7 +27,7 @@ void PhoneBook::addContact(const std::string first_name,
   return;
 }
 
-std::string PhoneBook::displayString(std::string str) {
+std::string PhoneBook::trimString(std::string str) {
   if (str.length() > 10) {
     str.resize(9);
     str.append(".");
@@ -40,14 +40,17 @@ std::string PhoneBook::displayString(std::string str) {
 void PhoneBook::showContacts(void) {
   int i;
 
+  std::cout << PhoneBook::trimString("Index") << "|";
+  std::cout << PhoneBook::trimString("First Name") << "|";
+  std::cout << PhoneBook::trimString("Last Name") << "|";
+  std::cout << PhoneBook::trimString("Nickname") << std::endl;
+  std::cout << "-------------------------------------------" << std::endl;
   i = 0;
   while (i < PhoneBook::numContacts) {
-    std::cout << i << " | ";
-    std::cout << PhoneBook::displayString(contacts[i].getFirstName()) << " | ";
-    std::cout << PhoneBook::displayString(contacts[i].getLastName()) << " | ";
-    std::cout << PhoneBook::displayString(contacts[i].getNickname()) << " | ";
-    std::cout << PhoneBook::displayString(contacts[i].getPhoneNumber()) << " | ";
-    std::cout << PhoneBook::displayString(contacts[i].getDarkestSecret())
+    std::cout << PhoneBook::trimString(std::to_string(i))  << "|";
+    std::cout << PhoneBook::trimString(contacts[i].getFirstName()) << "|";
+    std::cout << PhoneBook::trimString(contacts[i].getLastName()) << "|";
+    std::cout << PhoneBook::trimString(contacts[i].getNickname())
               << std::endl;
     i++;
   }

@@ -37,7 +37,7 @@
 //   ◦ The program quits and the contacts are lost forever!
 // • Any other input is discarded.
 // Once a command has been correctly executed, the program waits for another
-//   one. It stops when the user inputs EXIT. Give arelevant name to your
+//   one. It stops when the user inputs EXIT. Give are levant name to your
 //   executable.
 
 #include <Contact.hpp>
@@ -50,15 +50,15 @@ void command_add(PhoneBook &phone_book) {
   std::string phone_number;
   std::string darkest_secret;
 
-  std::cout << "Enter first name: ";
+  std::cout << "- Enter first name (only alphabets): ";
   std::cin >> first_name;
-  std::cout << "Enter last name: ";
+  std::cout << "- Enter last name (only alphabets): ";
   std::cin >> last_name;
-  std::cout << "Enter nickname: ";
+  std::cout << "- Enter nickname (only alphabets): ";
   std::cin >> nickname;
-  std::cout << "Enter phone number: ";
+  std::cout << "- Enter phone number (only numbers): ";
   std::cin >> phone_number;
-  std::cout << "Enter darkest secret: ";
+  std::cout << "- Enter darkest secret: (only alphabets): ";
   std::cin >> darkest_secret;
   phone_book.addContact(
       first_name, last_name, nickname, phone_number, darkest_secret);
@@ -68,7 +68,7 @@ void command_search(PhoneBook &phone_book) {
   int index;
 
   phone_book.showContacts();
-  std::cout << "Enter a name: ";
+  std::cout << "- Enter an index number: ";
   std::cin >> index;
   phone_book.searchContact(index);
 }
@@ -76,23 +76,21 @@ void command_search(PhoneBook &phone_book) {
 int main() {
   PhoneBook   phone_book;
   std::string command;
-  std::string first_name;
-  std::string last_name;
-  std::string nickname;
-  std::string phone_number;
-  std::string darkest_secret;
+
   while (1) {
     std::cout << "Enter a command: ";
-    std::cin >> command;
+    if (!(std::cin >> command)) {
+      break;
+    }
     if (command == "ADD") {
       command_add(phone_book);
     } else if (command == "SEARCH") {
       command_search(phone_book);
-    } else if (command == "EXIT") {
-      break;
-    } else {
+    } else if (command != "EXIT") {
       std::cout << "Invalid command. Command should be (ADD | SEARCH | EXIT)"
                 << std::endl;
+    } else if (command == "EXIT") {
+      break;
     }
   }
   return 0;

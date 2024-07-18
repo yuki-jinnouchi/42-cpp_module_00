@@ -24,7 +24,7 @@ class PhoneBook {
         const std::string nickname, const std::string phone_number,
         const std::string darkest_secret);
 
-    std::string displayString(std::string);
+    std::string trimString(std::string);
     void        showContacts(void);
     void        searchContact(int);
 
