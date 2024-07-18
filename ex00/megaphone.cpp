@@ -14,8 +14,8 @@ std::string to_upper(std::string str) {
   return (str);
 }
 
-void megaphone(int argc, char **argv) {
-  int i;
+void megaphone(int argc, char** argv) {
+  int         i;
   std::string str;
 
   i = 1;
@@ -28,7 +28,7 @@ void megaphone(int argc, char **argv) {
   std::cout << std::endl;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
   if (argc > 1) {
     megaphone(argc, argv);
   } else {
