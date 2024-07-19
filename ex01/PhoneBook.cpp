@@ -1,4 +1,5 @@
 #include <PhoneBook.hpp>
+#include <sstream>
 
 void PhoneBook::addContact(const std::string first_name,
     const std::string last_name, const std::string nickname,
@@ -38,8 +39,10 @@ std::string PhoneBook::trimString(std::string str) {
 }
 
 void PhoneBook::showContacts(void) {
-  int i;
+  int         i;
+  std::string index;
 
+  index = "0";
   std::cout << PhoneBook::trimString("Index") << "|";
   std::cout << PhoneBook::trimString("First Name") << "|";
   std::cout << PhoneBook::trimString("Last Name") << "|";
@@ -47,7 +50,8 @@ void PhoneBook::showContacts(void) {
   std::cout << "-------------------------------------------" << std::endl;
   i = 0;
   while (i < PhoneBook::numContacts) {
-    std::cout << PhoneBook::trimString(std::to_string(i))  << "|";
+    index[0] = i + '0';
+    std::cout << PhoneBook::trimString(index)  << "|";
     std::cout << PhoneBook::trimString(contacts[i].getFirstName()) << "|";
     std::cout << PhoneBook::trimString(contacts[i].getLastName()) << "|";
     std::cout << PhoneBook::trimString(contacts[i].getNickname())
