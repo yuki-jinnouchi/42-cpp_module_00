@@ -100,7 +100,7 @@ void Account::_displayTimestamp(void) {
   static time_t firstTime = time(0);
   time_t        now = firstTime;
   tm*           localTime = localtime(&now);
-  char          timestamp[15];
+  char          timestamp[18];
   strftime(timestamp, sizeof(timestamp), "[%Y%m%d_%H%M%S]", localTime);
   std::cout << timestamp << " ";
 }
