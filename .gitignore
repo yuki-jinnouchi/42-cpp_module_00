@@ -6,6 +6,7 @@
 *.lo
 *.o
 *.obj
+objs
 
 # Precompiled Headers
 *.gch
@@ -38,4 +39,6 @@
 .devcontainer
 
 #project based
-./megaphone
+megaphone
+phonebook
+test
